@@ -57,6 +57,11 @@ public class TicTacGame {
 			if (winner) {
 				return playerTurn.getName();
 			}
+			
+			 if (isBoardFull()) {
+		            gameBoard.printBoard();
+		            return "It's a tie!";
+		        }
 		}
 		return "tie";
 	}
@@ -99,6 +104,17 @@ public class TicTacGame {
 
 		return rowMatch || columnMatch || diagonalMatch || antiDiagonalMatch;
 
+	}
+	
+	public boolean isBoardFull() {
+	    for (int i = 0; i < gameBoard.size; i++) {
+	        for (int j = 0; j < gameBoard.size; j++) {
+	            if (gameBoard.board[i][j] == null) {
+	                return false; // If there's an empty cell, board is not full
+	            }
+	        }
+	    }
+	    return true; // No empty cells, board is full
 	}
 
 }
